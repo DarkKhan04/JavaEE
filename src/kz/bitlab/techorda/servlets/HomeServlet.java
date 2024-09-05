@@ -5,7 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import kz.bitlab.techorda.db.Author;
 import kz.bitlab.techorda.db.Book;
+import kz.bitlab.techorda.db.DBConnection;
 import kz.bitlab.techorda.db.DBManager;
 
 import javax.sql.rowset.serial.SerialException;
@@ -19,10 +22,15 @@ import static java.awt.Color.red;
 public class HomeServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Book> books = DBManager.getBooks();
-        request.setAttribute("books", books);
-        request.getRequestDispatcher("/books.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        String text = (String) session.getAttribute("username");
 
+        ArrayList<Book> books = DBConnection.getBooks();
+        request.setAttribute("books", books);
+
+        ArrayList<Author> authors = DBConnection.getAuthors();
+        request.setAttribute("authors", authors);
+        request.getRequestDispatcher("/books.jsp").forward(request, response);
 
     }
 }

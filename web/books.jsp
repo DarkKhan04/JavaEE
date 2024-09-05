@@ -11,10 +11,14 @@
         <div class="container">
             <div class = "row mt-3">
                 <div class="col-12">
+                    <%
+                        if(currentUser!=null){
+                            if(currentUser.getRole_id()==1){
+                    %>
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         + Add Book
                     </button>
-
+                    <%}%>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -31,6 +35,7 @@
                             </div>
                         </div>
                     </div>
+                    <%}%>
 
                     <table class="table table-striped table-hover mt-3">
                         <thead>
@@ -53,14 +58,17 @@
                             <tr>
                                 <td><%=b.getId()%></td>
                                 <td><%=b.getName()%></td>
-                                <td><%=b.getAuthor()%></td>
+                                <td><%=b.getAuthor().getFirstName() + " " + b.getAuthor().getLastName()%></td>
                                 <td><%=b.getGenre()%></td>
-                                <td><%=b.getPrice()%></td>
+                                <td><%=b.getPrice()%> KZT</td>
                                 <td>
                                     <a class="btn btn-success btn-sm" href="/details?book_id=<%=b.getId()%>">DETAILS</a>
                                 </td>
                             </tr>
-                            <%}}%>
+                            <%
+                                    }
+                            }
+                            %>
                         </tbody>
                     </table>
                 </div>

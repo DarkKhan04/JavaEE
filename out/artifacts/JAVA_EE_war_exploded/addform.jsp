@@ -1,4 +1,5 @@
-<form action="add-book" method="post">
+<%@ page import="kz.bitlab.techorda.db.Author" %>
+<form action="/add-book" method="post">
     <div class="row">
         <div class="col-12">
             <label>NAME : </label>
@@ -17,7 +18,19 @@
     </div>
     <div class="row mt-2">
         <div class="col-12">
-            <input type="text" class="form-control" name="book_author">
+            <select class="form-select" name="book_author">
+                <%
+                    ArrayList<Author> authors = (ArrayList<Author>) request.getAttribute("authors");
+                    if(authors!=null) {
+                        for(Author author : authors){
+                %>
+                    <option value="<%=author.getId()%>"><%=author.getFirstName() + " " + author.getLastName()%></option>
+                <%
+                        }
+                    }
+                %>
+
+            </select>
         </div>
     </div>
 
@@ -29,11 +42,11 @@
     <div class="row mt-2">
         <div class="col-12" >
             <select class="form-select" name="book_genre">
-                <option>FANTASY</option>
-                <option>HORROR</option>
-                <option>DRAMA</option>
-                <option>ROMAN</option>
-                <option>BIOGRAPHY</option>
+                <option>Fantasy</option>
+                <option>Horror</option>
+                <option>Drama</option>
+                <option>Roman</option>
+                <option>Biography</option>
             </select>
         </div>
     </div>

@@ -9,54 +9,7 @@ public class DBManager {
     private static int id = 6;
 
 
-    static{
-        books.add(
-                new Book(1,
-                        "Harry Potter and Philosophy Stone",
-                        "Joane Rowling",
-                        "Fantasy",
-                        5000,
-                        "First part of Harry Potter books"
-                )
-        );
-        books.add(
-                new Book(2,
-                        "Harry Potter and Azkaban Prisoner",
-                        "Joane Rowling",
-                        "Fantasy",
-                        6000,
-                        "Part about Sirius Black"
-                )
-        );
-        books.add(
-                new Book(3,
-                        "Twilight",
-                        "Stefano Mayer",
-                        "Fantasy",
-                        7000,
-                        "Oborotender koroche"
-                )
-        );
-        books.add(
-                new Book(4,
-                        "Abay Zholy",
-                        "Mukhtar Auezov",
-                        "Roman",
-                        50000,
-                        "legend book about legend"
-                )
-        );
-        books.add(
-                new Book(5,
-                        "I am Zlatan",
-                        "Zlatan Ibrahimovich",
-                        "Biography",
-                        8000,
-                        "bio go krch"
-                )
-        );
-    }
-
+    
     public static ArrayList<Book> getBooks(){
         return books;
     }
